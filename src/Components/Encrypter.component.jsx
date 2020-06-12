@@ -52,11 +52,6 @@ function Encrypter() {
         />
         <Typography className={classes.passwordText}>Only numbers</Typography>
       </Item>
-      <Item container justify="flex-end" className={classes.button}>
-        <Button variant="contained" color="primary">
-          Encrypt
-        </Button>
-      </Item>
     </>
   );
 }
