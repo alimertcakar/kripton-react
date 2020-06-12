@@ -1,11 +1,54 @@
 import React, { Fragment } from 'react';
+import { Container, Grid as G, Chip } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Encrypter from "./Components/Encrypter.component.jsx";
+
+const Grid = props => <G container {...props} />
+const Item = props => <G xs={6} item {...props} />
+
+const useStyles = makeStyles(theme => ({
+  chip: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.primary.main,
+    color: "white",
+    cursor: "pointer"
+  }
+}));
 
 function App() {
+  const classes = useStyles();
+
+  function switchToEncrypt() {
+    console.log("Encrypt Menu")
+  }
+  function switchToDecrypt() {
+    console.log("Decrypt Menu")
+  }
   return (
     <Fragment>
+      <Container>
+        <Grid justify="center">
+          <Item xs={6}>
+            <Grid justify="center">
+              <Item container xs={3} justify="center">
+                <Chip label="Encrypt" className={classes.chip} onClick={switchToEncrypt}></Chip>
+              </Item>
+              <Item container xs={3} justify="center">
+                <Chip label="Decrypt" className={classes.chip} onClick={switchToDecrypt}></Chip>
+              </Item>
+            </Grid>
+          </Item>
+        </Grid>
 
-      Hey
-    </Fragment>
+        <Grid justify="center">
+          <Item>
+            <Grid justify="center">
+              <Encrypter />
+            </Grid>
+          </Item>
+        </Grid>
+      </Container>
+    </Fragment >
   );
 }
 
