@@ -29,10 +29,13 @@ function Encrypter(props) {
 
   function cryption(e) {
     if (props.cryption === "encrypt") {
-      console.log(String.fromCharCode(e.keyCode)); //change this bullshit: its keycode => string => keycode
-      //setTextValue(kripton.encrypt(e.keycode, password));
+      setTextValue(
+        textValue + kripton.encrypt(String.fromCharCode(e.keyCode), password)
+      );
     } else {
-      setTextValue(textValue + kripton.decrypt(e.keycode.toString(), password));
+      setTextValue(
+        textValue + kripton.decrypt(String.fromCharCode(e.keyCode), password)
+      );
     }
   }
   return (
