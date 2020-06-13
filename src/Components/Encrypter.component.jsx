@@ -46,7 +46,6 @@ function Encrypter(props) {
           label="Encrypt text"
           variant="outlined"
           value={textValue}
-          onKeyDown={cryption}
         />
       </Item>
       <Item className={classes.textfield}>
