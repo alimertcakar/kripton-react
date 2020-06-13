@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Container, Grid as G, Chip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Encrypter from "./Components/Encrypter.component.jsx";
@@ -16,13 +16,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function App() {
-  const classes = useStyles();
+  const [cryption, setCryption] = useState("encrypt");
 
+  const classes = useStyles();
   function switchToEncrypt() {
-    console.log("Encrypt Menu")
+    setCryption("encrypt")
   }
   function switchToDecrypt() {
-    console.log("Decrypt Menu")
+    setCryption("decrypt")
   }
   return (
     <Fragment>
@@ -30,10 +31,10 @@ function App() {
         <Grid justify="center">
           <Item xs={6}>
             <Grid justify="center">
-              <Item container xs={3} justify="center">
+              <Item container xs={6} md={3} justify="center">
                 <Chip label="Encrypt" className={classes.chip} onClick={switchToEncrypt}></Chip>
               </Item>
-              <Item container xs={3} justify="center">
+              <Item container xs={6} md={3} justify="center">
                 <Chip label="Decrypt" className={classes.chip} onClick={switchToDecrypt}></Chip>
               </Item>
             </Grid>
@@ -41,9 +42,9 @@ function App() {
         </Grid>
 
         <Grid justify="center">
-          <Item>
+          <Item xs={12} md={6}>
             <Grid justify="center">
-              <Encrypter />
+              <Encrypter cryption={cryption} />
             </Grid>
           </Item>
         </Grid>

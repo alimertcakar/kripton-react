@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Grid as G, Button, Typography } from "@material-ui/core";
-import { encrypt, decrypt } from "@alimert/kripton";
+import kripton from "@alimert/kripton";
 
 const Item = (props) => <G item {...props} xs={12} />;
 
@@ -15,30 +15,35 @@ const useStyles = makeStyles((theme) => ({
   },
   textfield: {
     margin: theme.spacing(1),
-    [theme.breakpoints.up("md")]: {
-      width: "100%",
-    },
+    width: "100%",
     "& .MuiTextField-root": {
-      [theme.breakpoints.up("md")]: {
-        width: "100%",
-      },
+      width: "100%",
     },
   },
 }));
 
-function Encrypter() {
+function Encrypter(props) {
   const classes = useStyles();
   const [password, setPassword] = useState([1, 9, 2, 3]);
+  const [textValue, setTextValue] = useState("");
+
+  function cryption(e) {
+    if (props.cryption === "encrypt") {
+      console.log(String.fromCharCode(e.keyCode)); //change this bullshit: its keycode => string => keycode
+      //setTextValue(kripton.encrypt(e.keycode, password));
+    } else {
+      setTextValue(textValue + kripton.decrypt(e.keycode.toString(), password));
+    }
+  }
   return (
     <>
       <Item className={classes.textfield}>
         <TextField
           id="decyrpt-textfield"
-          label="Encrypter"
-          multiline
-          rows={4}
-          defaultValue="Text you want you to Encrypt"
+          label="Encrypt text"
           variant="outlined"
+          value={textValue}
+          onKeyDown={cryption}
         />
       </Item>
       <Item className={classes.textfield}>
@@ -48,7 +53,7 @@ function Encrypter() {
           rows={1}
           type="number"
           variant="outlined"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value.split("").map((v) => +v))}
         />
         <Typography className={classes.passwordText}>Only numbers</Typography>
       </Item>
