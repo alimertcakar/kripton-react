@@ -1,1 +1,1 @@
-Caesar's crypt, with UI in React
+Caesar's cipher, with UI in React
