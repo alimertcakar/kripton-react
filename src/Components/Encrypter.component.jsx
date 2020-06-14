@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
+  button: {
+    margin: theme.spacing(1),
+  },
 }));
 
 function Encrypter(props) {
@@ -69,9 +72,17 @@ function Encrypter(props) {
           <Typography className={classes.passwordText}>Only numbers</Typography>
         </StandardMotion>
       </Item>
-      <Item>
+      <Item
+        container
+        justify={props.cryption === "decrypt" ? "flex-end" : "flex-start"}
+      >
         <StandardMotion>
-          <Button variant="contained" color="primary" onClick={cryption}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={cryption}
+            className={classes.button}
+          >
             {props.cryption}
           </Button>
         </StandardMotion>
