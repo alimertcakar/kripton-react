@@ -44,29 +44,37 @@ function Encrypter(props) {
   return (
     <>
       <Item className={classes.textfield}>
-        <TextField
-          inputRef={textRef}
-          id="decyrpt-textfield"
-          label="Encrypt text"
-          variant="outlined"
-          onChange={updateTextValue}
-        />
+        <StandardMotion>
+          <TextField
+            inputRef={textRef}
+            id="decyrpt-textfield"
+            label="Encrypt text"
+            variant="outlined"
+            onChange={updateTextValue}
+          />
+        </StandardMotion>
       </Item>
       <Item className={classes.textfield}>
-        <TextField
-          id="decyrpt-textfield"
-          label="Password"
-          rows={1}
-          type="number"
-          variant="outlined"
-          onChange={(e) => setPassword(e.target.value.split("").map((v) => +v))}
-        />
-        <Typography className={classes.passwordText}>Only numbers</Typography>
+        <StandardMotion>
+          <TextField
+            id="decyrpt-textfield"
+            label="Password"
+            rows={1}
+            type="number"
+            variant="outlined"
+            onChange={(e) =>
+              setPassword(e.target.value.split("").map((v) => +v))
+            }
+          />
+          <Typography className={classes.passwordText}>Only numbers</Typography>
+        </StandardMotion>
       </Item>
       <Item>
-        <Button variant="contained" color="primary" onClick={cryption}>
-          {props.cryption}
-        </Button>
+        <StandardMotion>
+          <Button variant="contained" color="primary" onClick={cryption}>
+            {props.cryption}
+          </Button>
+        </StandardMotion>
       </Item>
     </>
   );

@@ -11,6 +11,7 @@ function StandardMotion(props) {
         stiffness: 260,
         damping: 20,
       }}
+      {...props}
     >
       {props.children}
     </motion.div>
