@@ -47,6 +47,7 @@ function Header() {
               transition={{
                 default: { duration: 8, ease: "easeInOut" },
                 fill: { duration: 1, ease: [1, 0, 0.8, 1] },
+                delay: 0.5,
               }}
             />
           </motion.svg>
