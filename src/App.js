@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Container, Grid as G, Chip } from "@material-ui/core";
+import { Container, Grid as G, Chip, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Encrypter from "./Components/Encrypter.component.jsx";
 import StandardMotion from "./Components/StandardMotion.component";
@@ -36,7 +36,7 @@ function App() {
         <Grid justify="center">
           <Item xs={6}>
             <Grid justify="center">
-              <Item container xs={6} md={3} justify="center">
+              <Item container xs={6} md={3} justify="center" >
                 <StandardMotion animate={{ scale: 1.5 }}>
                   <Chip label="Encrypt" className={classes.chip} onClick={switchToEncrypt} disabled={cryption === "decrypt" ? false : true} clickable={false} ></Chip>
                 </StandardMotion>
@@ -52,9 +52,11 @@ function App() {
 
         <Grid justify="center">
           <Item xs={12} md={6}>
-            <Grid justify="center">
-              <Encrypter cryption={cryption} />
-            </Grid>
+            <Box p={2}>
+              <Grid justify="center">
+                <Encrypter cryption={cryption} />
+              </Grid>
+            </Box>
           </Item>
         </Grid>
       </Container>
