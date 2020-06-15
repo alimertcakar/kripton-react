@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import StandardMotion from "./StandardMotion.component";
-
 import { Grid as G, Button, Typography } from "@material-ui/core";
 import kripton from "@alimert/kripton";
 

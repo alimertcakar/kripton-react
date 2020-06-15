@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Item } from "./GridParts";
 import { Typography, Box } from "@material-ui/core";
-
+import MorphTextShowcase from "./MorphTextShowcase.component";
 import { motion } from "framer-motion";
 import kriptonPath from "../kriptonSvgPath";
 const svgStyle = {
@@ -56,6 +56,11 @@ function Header() {
             <Typography>
               Krypton is a crypting website using caesar's cipher.
             </Typography>
+          </Box>
+        </Item>
+        <Item container justify="center" xs={12}>
+          <Box p={3}>
+            <MorphTextShowcase />
           </Box>
         </Item>
       </Grid>
