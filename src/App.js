@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     color: "white",
     cursor: "pointer"
+  },
+  chipContainer: {
+    marginTop: "25px",
   }
 }));
 
@@ -28,13 +31,12 @@ function App() {
     setCryption("decrypt")
   }
   return (
-    <Fragment>
-      <Container>
-
+    <Container style={{ minHeight: "100%" }}>
+      <section style={{ height: "50vh" }}>
         <Header />
 
-        <Grid justify="center">
-          <Item xs={6}>
+        <Grid justify="center" >
+          <Item xs={6} className={classes.chipContainer}>
             <Grid justify="center">
               <Item container xs={6} md={3} justify="center" >
                 <StandardMotion animate={{ scale: 1.5 }}>
@@ -59,8 +61,8 @@ function App() {
             </Box>
           </Item>
         </Grid>
-      </Container>
-    </Fragment >
+      </section>
+    </Container>
   );
 }
 
