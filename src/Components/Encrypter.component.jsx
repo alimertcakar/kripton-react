@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+    borderRadius: "inherit",
   },
 }));
 
@@ -47,7 +48,7 @@ function Encrypter(props) {
   return (
     <>
       <Item className={classes.textfield}>
-        <StandardMotion>
+        <StandardMotion whileHover={{ scale: 1.05 }}>
           <TextField
             inputRef={textRef}
             id="decyrpt-textfield"
@@ -58,7 +59,7 @@ function Encrypter(props) {
         </StandardMotion>
       </Item>
       <Item className={classes.textfield}>
-        <StandardMotion>
+        <StandardMotion whileHover={{ scale: 1.05 }}>
           <TextField
             id="decyrpt-textfield"
             label="Password"
@@ -76,7 +77,10 @@ function Encrypter(props) {
         container
         justify={props.cryption === "decrypt" ? "flex-end" : "flex-start"}
       >
-        <StandardMotion>
+        <StandardMotion
+          whileTap={{ borderRadius: "50%" }}
+          transition={{ borderRadius: { duration: 1.5 }, ease: "easeIn" }}
+        >
           <Button
             variant="contained"
             color="primary"
