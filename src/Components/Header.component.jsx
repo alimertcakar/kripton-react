@@ -1,9 +1,13 @@
 import React from "react";
+
 import { Grid, Item } from "./GridParts";
 import { Typography, Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
 import MorphTextShowcase from "./MorphTextShowcase.component";
 import { motion } from "framer-motion";
 import kriptonPath from "../kriptonSvgPath";
+
 const svgStyle = {
   width: 200,
   height: 100,
@@ -21,7 +25,15 @@ const icon = {
   },
 };
 
+const useStyles = makeStyles((theme) => ({
+  headertext: {
+    padding: theme.spacing(3),
+    [theme.breakpoints.down("sm")]: { padding: 0 },
+  },
+}));
+
 function Header() {
+  const classes = useStyles();
   return (
     <header>
       <Grid justify="center">
@@ -53,16 +65,12 @@ function Header() {
           </motion.svg>
         </Item>
         <Item container justify="center" xs={12}>
-          <Box p={3}>
-            <Typography>
-              Krypton is a crypting website using caesar's cipher.
-            </Typography>
-          </Box>
+          <Typography className={classes.headertext}>
+            Krypton is a crypting website using caesar's cipher.
+          </Typography>
         </Item>
         <Item container justify="center" xs={12}>
-          <Box p={3}>
-            <MorphTextShowcase />
-          </Box>
+          <MorphTextShowcase />
         </Item>
       </Grid>
     </header>

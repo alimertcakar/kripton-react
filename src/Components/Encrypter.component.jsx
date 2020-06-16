@@ -10,6 +10,7 @@ const Item = (props) => <G item {...props} xs={12} />;
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
+    borderRadius: "inherit",
   },
   passwordText: {
     margin: theme.spacing(1),
@@ -20,10 +21,6 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiTextField-root": {
       width: "100%",
     },
-  },
-  button: {
-    margin: theme.spacing(1),
-    borderRadius: "inherit",
   },
 }));
 
@@ -79,7 +76,7 @@ function Encrypter(props) {
       >
         <StandardMotion
           whileTap={{ borderRadius: "50%" }}
-          transition={{ borderRadius: { duration: 1.5 }, ease: "easeIn" }}
+          transition={{ borderRadius: { duration: 0.5 }, ease: "easeIn" }}
         >
           <Button
             variant="contained"
