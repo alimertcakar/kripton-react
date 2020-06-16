@@ -66,7 +66,7 @@ function Header() {
         </Item>
         <Item container justify="center" xs={12}>
           <Typography className={classes.headertext}>
-            Krypton is a crypting website using caesar's cipher.
+            Krypton is a encrypting npm package using caesar's cipher.
           </Typography>
         </Item>
         <Item container justify="center" xs={12}>
