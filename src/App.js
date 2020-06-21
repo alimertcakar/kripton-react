@@ -8,6 +8,8 @@ import Encrypter from "./Components/Encrypter.component.jsx";
 import StandardMotion from "./Components/StandardMotion.component";
 import Header from "./Components/Header.component.jsx";
 
+import translation from "./translation.json";
+
 const Grid = props => <G container {...props} />
 const Item = props => <G xs={6} item {...props} />
 
@@ -30,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function App() {
+  const [currentLang, setCurrentLang] = useState("tr");
   const [cryption, setCryption] = useState("encrypt");
   useGlobalStyles();
   const classes = useStyles();
@@ -42,18 +45,18 @@ function App() {
   return (
     <Container className={classes.container}>
       <section className={classes.container}>
-        <Header />
+        <Header description={translation[currentLang].description} />
         <Grid justify="center" >
           <Item xs={12} sm={6} className={classes.chipContainer}>
             <Grid justify="center">
               <Item container xs={6} md={3} justify="center" >
                 <StandardMotion animate={{ scale: 1.5 }}>
-                  <Chip label="Encrypt" className={classes.chip} onClick={switchToEncrypt} disabled={cryption === "decrypt" ? false : true} clickable={false} ></Chip>
+                  <Chip label={translation[currentLang].encrypt} className={classes.chip} onClick={switchToEncrypt} disabled={cryption === "decrypt" ? false : true} clickable={false} ></Chip>
                 </StandardMotion>
               </Item>
               <Item container xs={6} md={3} justify="center">
                 <StandardMotion animate={{ scale: 1.5 }}>
-                  <Chip label="Decrypt" className={classes.chip} onClick={switchToDecrypt} disabled={cryption === "encrypt" ? false : true} clickable={false} ></Chip>
+                  <Chip label={translation[currentLang].decrypt} className={classes.chip} onClick={switchToDecrypt} disabled={cryption === "encrypt" ? false : true} clickable={false} ></Chip>
                 </StandardMotion>
               </Item>
             </Grid>
@@ -64,7 +67,7 @@ function App() {
           <Item xs={12} md={6}>
             <Box p={2}>
               <Grid justify="center">
-                <Encrypter cryption={cryption} />
+                <Encrypter cryption={cryption} buttonText={{ encrypt: translation[currentLang].encrypt, decrypt: translation[currentLang].decrypt }} />
               </Grid>
             </Box>
           </Item>

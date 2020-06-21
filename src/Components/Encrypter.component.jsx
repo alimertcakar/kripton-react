@@ -30,6 +30,13 @@ function Encrypter(props) {
   const [textValue, setTextValue] = useState("");
   const textRef = useRef(null);
 
+  let ButtonText;
+  if (props.cryption === "encrypt") {
+    ButtonText = props.buttonText.encrypt;
+  } else {
+    ButtonText = props.buttonText.decrypt;
+  }
+
   function cryption(e) {
     if (props.cryption === "encrypt") {
       setTextValue(kripton.encrypt(textValue, password));
@@ -84,7 +91,7 @@ function Encrypter(props) {
             onClick={cryption}
             className={classes.button}
           >
-            {props.cryption}
+            {ButtonText}
           </Button>
         </StandardMotion>
       </Item>

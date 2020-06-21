@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header() {
+function Header(props) {
   const classes = useStyles();
   return (
     <header>
@@ -66,7 +66,7 @@ function Header() {
         </Item>
         <Item container justify="center" xs={12}>
           <Typography className={classes.headertext}>
-            Krypton is a encrypting npm package using caesar's cipher.
+            {props.description}
           </Typography>
         </Item>
         <Item container justify="center" xs={12}>
