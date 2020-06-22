@@ -40,8 +40,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-//TODO Language toplarına anaplan rengi=> border 2px=> border radius 100% ekle
-
 function App() {
   const [currentLang, setCurrentLang] = useState("tr");
   const [cryption, setCryption] = useState("encrypt");
