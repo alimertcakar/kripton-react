@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import MorphTextShowcase from "./MorphTextShowcase.component";
 import { motion } from "framer-motion";
 import kriptonPath from "../kriptonSvgPath";
+import LanguageBar from "./LanguageBar";
 
 const svgStyle = {
   width: 200,
@@ -63,6 +64,9 @@ function Header(props) {
               }}
             />
           </motion.svg>
+        </Item>
+        <Item container xs={12} justify="center">
+          <LanguageBar />
         </Item>
         <Item container justify="center" xs={12}>
           <Typography className={classes.headertext}>

@@ -56,7 +56,7 @@ function Encrypter(props) {
           <TextField
             inputRef={textRef}
             id="decyrpt-textfield"
-            label="Encrypt text"
+            label={props.textfieldInfo.first}
             variant="outlined"
             onChange={updateTextValue}
           />
@@ -66,7 +66,7 @@ function Encrypter(props) {
         <StandardMotion whileHover={{ scale: 1.05 }}>
           <TextField
             id="decyrpt-textfield"
-            label="Password"
+            label={props.textfieldInfo.second}
             rows={1}
             type="number"
             variant="outlined"
@@ -74,7 +74,9 @@ function Encrypter(props) {
               setPassword(e.target.value.split("").map((v) => +v))
             }
           />
-          <Typography className={classes.passwordText}>Only numbers</Typography>
+          <Typography className={classes.passwordText}>
+            {props.textfieldInfo.onlyNumbers}
+          </Typography>
         </StandardMotion>
       </Item>
       <Item

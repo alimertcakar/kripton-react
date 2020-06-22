@@ -1,14 +1,18 @@
 {
   "en": {
     "description": "Krypton is a encrypting npm package using caesar's cipher.",
-    "encrypt": "encrypt",
-    "decrypt": "decrypt",
-    "only numbers": "Only numbers"
+    "encrypt": "Encrypt",
+    "decrypt": "Decrypt",
+    "only numbers": "Only numbers",
+    "encrypt text": "Text to encrypt",
+    "password": "Numbers to use as password"
   },
   "tr": {
     "description": "Kripton; Sezar yöntemi olarak bilinen, alfabede harf kaydırma metodu kullanarak metin şifreleyebileceğiniz bir web sitesidir.",
     "encrypt": "Şifrele",
     "decrypt": "Şifre çöz",
-    "only numbers": "Sadece rakam girin"
+    "only numbers": "Sadece rakam girin",
+    "encrypt text": "Şifrelenecek Metin",
+    "password": "Şifre olarak kullanılacak sayı dizisi"
   }
 }

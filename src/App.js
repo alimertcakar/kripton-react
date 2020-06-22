@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 
-import { Container, Grid as G, Chip, Box } from "@material-ui/core";
+import { Container, Grid as G, Chip, Box, Typography, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import useGlobalStyles from "./useGlobalStyles";
 
@@ -10,6 +10,7 @@ import Header from "./Components/Header.component.jsx";
 
 import translation from "./translation.json";
 
+export const LanguageContext = createContext();
 const Grid = props => <G container {...props} />
 const Item = props => <G xs={6} item {...props} />
 
@@ -43,40 +44,46 @@ function App() {
     setCryption("decrypt")
   }
   return (
-    <Container className={classes.container}>
-      <section className={classes.container}>
-        <Header description={translation[currentLang].description} />
-        <Grid justify="center" >
-          <Item xs={12} sm={6} className={classes.chipContainer}>
-            <Grid justify="center">
-              <Item container xs={6} md={3} justify="center" >
-                <StandardMotion animate={{ scale: 1.5 }}>
-                  <Chip label={translation[currentLang].encrypt} className={classes.chip} onClick={switchToEncrypt} disabled={cryption === "decrypt" ? false : true} clickable={false} ></Chip>
-                </StandardMotion>
-              </Item>
-              <Item container xs={6} md={3} justify="center">
-                <StandardMotion animate={{ scale: 1.5 }}>
-                  <Chip label={translation[currentLang].decrypt} className={classes.chip} onClick={switchToDecrypt} disabled={cryption === "encrypt" ? false : true} clickable={false} ></Chip>
-                </StandardMotion>
+    <div>
+      <LanguageContext.Provider value={[currentLang, setCurrentLang]}>
+        <Container className={classes.container}>
+          <section className={classes.container}>
+            <Header description={translation[currentLang].description} />
+            <Grid justify="center" >
+              <Item xs={12} sm={6} className={classes.chipContainer}>
+                <Grid justify="center">
+                  <Item container xs={6} md={3} justify="center" >
+                    <StandardMotion animate={{ scale: 1.5 }}>
+                      <Chip label={translation[currentLang].encrypt} className={classes.chip} onClick={switchToEncrypt} disabled={cryption === "decrypt" ? false : true} clickable={false} ></Chip>
+                    </StandardMotion>
+                  </Item>
+                  <Item container xs={6} md={3} justify="center">
+                    <StandardMotion animate={{ scale: 1.5 }}>
+                      <Chip label={translation[currentLang].decrypt} className={classes.chip} onClick={switchToDecrypt} disabled={cryption === "encrypt" ? false : true} clickable={false} ></Chip>
+                    </StandardMotion>
+                  </Item>
+                </Grid>
               </Item>
             </Grid>
-          </Item>
-        </Grid>
 
-        <Grid justify="center">
-          <Item xs={12} md={6}>
-            <Box p={2}>
-              <Grid justify="center">
-                <Encrypter cryption={cryption} buttonText={{ encrypt: translation[currentLang].encrypt, decrypt: translation[currentLang].decrypt }} />
-              </Grid>
-            </Box>
-          </Item>
-        </Grid>
-      </section>
-      <section>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni nulla culpa aspernatur nostrum provident iste ad, ullam nisi odit beatae fugit libero ipsam, corporis ratione, sed necessitatibus dicta quia distinctio. Voluptate sunt, maxime nihil odit velit officiis, minima, nam quo consectetur at corrupti sit dolores minus delectus perferendis est fugiat laudantium. Voluptas, repellendus ipsum. Corporis quis accusantium velit eveniet. Nobis incidunt dicta totam assumenda iusto voluptate. Porro delectus temporibus nisi nesciunt ratione neque vero unde similique assumenda minus. Animi necessitatibus error omnis quis, obcaecati quod culpa tempore magni tempora officia deleniti quo suscipit voluptates, aliquid totam molestias ab eum quas.
-      </section>
-    </Container>
+            <Grid justify="center">
+              <Item xs={12} md={6}>
+                <Box p={2}>
+                  <Grid justify="center">
+                    <Encrypter cryption={cryption} buttonText={{ encrypt: translation[currentLang].encrypt, decrypt: translation[currentLang].decrypt }} textfieldInfo={{ first: translation[currentLang]["encrypt text"], second: translation[currentLang].password, onlyNumbers: translation[currentLang]["only numbers"] }} />
+                  </Grid>
+                </Box>
+              </Item>
+            </Grid>
+          </section>
+          <section>
+            <Typography>
+              Adından da anlaşıldığı üzere bu algoritmayı Jul Sezar gönderdiği mesajların düşmanların tarafında ele geçirilirse o mesajı anlamaması için oluşturulmuştur. Bu algoritma en temel şifreleme olarak kabul edilmektedir. Günümüzde şifreleme için pek güvenli sayılmamaktadır. Çünkü çözme olasılığı 1/25 dır. Eğer şifreleme türü bilinmiyorsa bu daha zor olacaktır ama biliniyorsa en fazla 25 denemede şifre kırılacaktır. Günümüzde hiçbir şifreleme çeşidi kırılamaz değildir. Bazı şifreler 10 günde kırılırken bazı şifreler ise 100 yılda kırılabilir. Bir şifreyi kırma süreciniz, bilgisayarınızın gücüne göre değişecektir.
+          </Typography>
+          </section>
+        </Container>
+      </LanguageContext.Provider>
+    </div>
   );
 }
 
