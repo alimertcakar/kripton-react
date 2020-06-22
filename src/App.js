@@ -16,7 +16,8 @@ const Item = props => <G xs={6} item {...props} />
 
 const useStyles = makeStyles(theme => ({
   container: {
-    minHeight: "100vh"
+    minHeight: "100vh",
+    paddingTop: "2vh"
   },
   chip: {
     margin: theme.spacing(2),
@@ -29,6 +30,12 @@ const useStyles = makeStyles(theme => ({
   },
   section: {
     minHeight: "100vh"
+  },
+  flexContainer: {
+    display: "flex"
+  },
+  background: {
+    backgroundImage: 'url("encryption.png")'
   }
 }));
 
@@ -44,42 +51,60 @@ function App() {
     setCryption("decrypt")
   }
   return (
-    <div>
+    <div className={classes.background}>
       <LanguageContext.Provider value={[currentLang, setCurrentLang]}>
         <Container className={classes.container}>
-          <section className={classes.container}>
-            <Header description={translation[currentLang].description} />
-            <Grid justify="center" >
-              <Item xs={12} sm={6} className={classes.chipContainer}>
-                <Grid justify="center">
-                  <Item container xs={6} md={3} justify="center" >
-                    <StandardMotion animate={{ scale: 1.5 }}>
-                      <Chip label={translation[currentLang].encrypt} className={classes.chip} onClick={switchToEncrypt} disabled={cryption === "decrypt" ? false : true} clickable={false} ></Chip>
-                    </StandardMotion>
-                  </Item>
-                  <Item container xs={6} md={3} justify="center">
-                    <StandardMotion animate={{ scale: 1.5 }}>
-                      <Chip label={translation[currentLang].decrypt} className={classes.chip} onClick={switchToDecrypt} disabled={cryption === "encrypt" ? false : true} clickable={false} ></Chip>
-                    </StandardMotion>
+          <Box mb={2}>
+            <Paper elevation={2}>
+              <section className={classes.container}>
+                <Header description={translation[currentLang].description} />
+                <Grid justify="center" >
+                  <Item xs={12} sm={6} className={classes.chipContainer}>
+                    <Grid justify="center">
+                      <Item container xs={6} md={3} justify="center" >
+                        <StandardMotion animate={{ scale: 1.5 }}>
+                          <Chip label={translation[currentLang].encrypt} className={classes.chip} onClick={switchToEncrypt} disabled={cryption === "decrypt" ? false : true} clickable={false} ></Chip>
+                        </StandardMotion>
+                      </Item>
+                      <Item container xs={6} md={3} justify="center">
+                        <StandardMotion animate={{ scale: 1.5 }}>
+                          <Chip label={translation[currentLang].decrypt} className={classes.chip} onClick={switchToDecrypt} disabled={cryption === "encrypt" ? false : true} clickable={false} ></Chip>
+                        </StandardMotion>
+                      </Item>
+                    </Grid>
                   </Item>
                 </Grid>
-              </Item>
-            </Grid>
 
-            <Grid justify="center">
-              <Item xs={12} md={6}>
-                <Box p={2}>
-                  <Grid justify="center">
-                    <Encrypter cryption={cryption} buttonText={{ encrypt: translation[currentLang].encrypt, decrypt: translation[currentLang].decrypt }} textfieldInfo={{ first: translation[currentLang]["encrypt text"], second: translation[currentLang].password, onlyNumbers: translation[currentLang]["only numbers"] }} />
-                  </Grid>
-                </Box>
-              </Item>
-            </Grid>
+                <Grid justify="center">
+                  <Item xs={12} md={6}>
+                    <Box p={1}>
+                      <Grid justify="center">
+                        <Encrypter cryption={cryption} buttonText={{ encrypt: translation[currentLang].encrypt, decrypt: translation[currentLang].decrypt }} textfieldInfo={{ first: translation[currentLang]["encrypt text"], second: translation[currentLang].password, onlyNumbers: translation[currentLang]["only numbers"] }} />
+                      </Grid>
+                    </Box>
+                  </Item>
+                </Grid>
+              </section>
+            </Paper>
+          </Box>
+          <section>
+            <Paper elevation={2}>
+              <Box p={2}>
+                <Typography>
+                  Adından da anlaşıldığı üzere bu algoritmayı Jul Sezar gönderdiği mesajların düşmanların tarafında ele geçirilirse o mesajı anlamaması için oluşturulmuştur. Bu algoritma en temel şifreleme olarak kabul edilmektedir. Günümüzde şifreleme için pek güvenli sayılmamaktadır. Çünkü çözme olasılığı 1/25 dır. Eğer şifreleme türü bilinmiyorsa bu daha zor olacaktır ama biliniyorsa en fazla 25 denemede şifre kırılacaktır. Günümüzde hiçbir şifreleme çeşidi kırılamaz değildir. Bazı şifreler 10 günde kırılırken bazı şifreler ise 100 yılda kırılabilir. Bir şifreyi kırma süreciniz, bilgisayarınızın gücüne göre değişecektir.
+              </Typography>
+              </Box>
+            </Paper>
+
           </section>
           <section>
-            <Typography>
-              Adından da anlaşıldığı üzere bu algoritmayı Jul Sezar gönderdiği mesajların düşmanların tarafında ele geçirilirse o mesajı anlamaması için oluşturulmuştur. Bu algoritma en temel şifreleme olarak kabul edilmektedir. Günümüzde şifreleme için pek güvenli sayılmamaktadır. Çünkü çözme olasılığı 1/25 dır. Eğer şifreleme türü bilinmiyorsa bu daha zor olacaktır ama biliniyorsa en fazla 25 denemede şifre kırılacaktır. Günümüzde hiçbir şifreleme çeşidi kırılamaz değildir. Bazı şifreler 10 günde kırılırken bazı şifreler ise 100 yılda kırılabilir. Bir şifreyi kırma süreciniz, bilgisayarınızın gücüne göre değişecektir.
-          </Typography>
+            <Paper elevation={2}>
+              <Box p={5} mt={2} justifyContent="center" className={classes.flexContainer}>
+                <Typography>
+                  Copyright @ Ali Mert Çakar
+              </Typography>
+              </Box>
+            </Paper>
           </section>
         </Container>
       </LanguageContext.Provider>

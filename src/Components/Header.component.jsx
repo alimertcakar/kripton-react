@@ -69,9 +69,11 @@ function Header(props) {
           <LanguageBar />
         </Item>
         <Item container justify="center" xs={12}>
-          <Typography className={classes.headertext}>
-            {props.description}
-          </Typography>
+          <Box p={2}>
+            <Typography className={classes.headertext}>
+              {props.description}
+            </Typography>
+          </Box>
         </Item>
         <Item container justify="center" xs={12}>
           <MorphTextShowcase />
