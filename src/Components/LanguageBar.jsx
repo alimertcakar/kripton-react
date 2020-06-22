@@ -11,6 +11,12 @@ const useStyles = makeStyles((theme) => ({
   iconRoot: {
     textAlign: "center",
   },
+  iconButton: {
+    "& .MuiIconButton-label": {
+      border: `3px solid ${theme.palette.primary.main}`,
+      borderRadius: "100%",
+    },
+  },
 }));
 
 function LanguageBar() {
@@ -22,12 +28,18 @@ function LanguageBar() {
   }
   return (
     <React.Fragment>
-      <IconButton onClick={() => setCurrentLang("tr")}>
+      <IconButton
+        onClick={() => setCurrentLang("tr")}
+        className={classes.iconButton}
+      >
         <Icon classes={{ root: classes.iconRoot }}>
           <img className={classes.imageIcon} src="/turkey.svg" alt="turkish" />
         </Icon>
       </IconButton>
-      <IconButton onClick={() => setCurrentLang("en")}>
+      <IconButton
+        onClick={() => setCurrentLang("en")}
+        className={classes.iconButton}
+      >
         <Icon classes={{ root: classes.iconRoot }}>
           <img className={classes.imageIcon} src="/uk.svg" alt="english" />
         </Icon>
